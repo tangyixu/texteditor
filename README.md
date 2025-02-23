@@ -1,13 +1,12 @@
 # CSC 207: Text Editor
 
-**Author**: _(TODO: fill me in)_
+**Author**: Tiffany Tang
 
 ## Resources Used
 
-+ _(TODO: fill me in)_
-+ ...
-+ ...
+JDK-23 is used; NetBeans is used as the IDE for this project.
+
+This is instructed by:
+https://osera.cs.grinnell.edu/ttap/data-structures-labs/text-editor.html
 
 ## Changelog
-
-_(TODO: fill me in with a log of your committed changes)_
