@@ -1,7 +1,6 @@
 package edu.grinnell.csc207.texteditor;
 
 import java.util.Arrays;
-
 /**
  * A gap buffer-based implementation of a text buffer.
  */
@@ -23,43 +22,102 @@ public class GapBuffer {
         this.size = 0;
     }
     
+    /**
+     * Inserts character ch into the buffer at the left cursor's current position.
+     * @param ch The character to be inserted.
+     */
     public void insert(char ch) {
-        
+        this.expand();
+        this.backingData[this.indexLeftCursor] = ch;
+        this.indexLeftCursor++;
+        this.size++;
     }
     
+    /**
+     * Expand the array when there is no room in the gap.
+     */
     public void expand() {
-        if(this.indexLeftCursor == this.indexRightCursor) {
+        if (this.indexLeftCursor == this.indexRightCursor) {
             char[] newArr = new char[this.backingData.length*2];
-            
-        }
-        
+            System.arraycopy(this.backingData, 0, newArr, 0, indexLeftCursor);
+            System.arraycopy(this.backingData, this.indexRightCursor, 
+                             newArr, newArr.length - this.indexRightCursor, 
+                             this.backingData.length - this.indexRightCursor);
+            this.backingData = newArr;
+            this.indexRightCursor = this.backingData.length + this.indexRightCursor;
+        }      
     }
 
+    /**
+     * Deletes the character at the one index to the left of left cursor's current position.
+     */
     public void delete() {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        this.indexLeftCursor--;
+        this.size--;
     }
 
+    /**
+     * Returns the current position of the left cursor.
+     * @return the current position of the left cursor.
+     */
     public int getCursorPosition() {
-        throw new UnsupportedOperationException("Unimplemented method 'getCursorPosition'");
+        return this.indexLeftCursor;
     }
 
+    /**
+     * Moves the cursor one position backwards.
+     */
     public void moveLeft() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveLeft'");
+        if (this.indexLeftCursor != 0 && this.indexRightCursor != 0) {
+            this.backingData[this.indexRightCursor - 1] = 
+                                    this.backingData[this.indexLeftCursor - 1];
+            this.indexLeftCursor--;
+            this.indexRightCursor--;
+        }
     }
 
+    /**
+     * Moves the cursor one position forwards.
+     */
     public void moveRight() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveRight'");
+        if (this.indexRightCursor < this.backingData.length - 1) {
+                this.backingData[this.indexLeftCursor - 1] = 
+                                    this.backingData[this.indexRightCursor - 1];
+                this.indexLeftCursor++;
+                this.indexRightCursor++;
+        }  
     }
 
+    /**
+     * Return the size of the backingData.
+     * @return the size of the backingData.
+     */
     public int getSize() {
-        throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+       return this.size;
     }
 
+    /**
+     * Returns the ith character of the array, zero-indexed.
+     * @param i
+     * @return the character at index i.
+     * @throws IndexOutOfBoundsException when i is invalid.
+     */
     public char getChar(int i) {
-        throw new UnsupportedOperationException("Unimplemented method 'getChar'");
+        if ( i < this.indexLeftCursor) {
+            return this.backingData[i];
+        } else if ( i < this.indexRightCursor) {
+            return this.backingData[this.indexRightCursor + i - this.indexLeftCursor];
+        } else {
+            return this.backingData[i + this.indexRightCursor - this.indexLeftCursor];
+        }      
     }
 
+    /**
+     * Returns the contents of the gab buffer as a String.
+     * @return a string as the contents.
+     */
+    @Override
     public String toString() {
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return Arrays.toString(this.backingData);
     }
 }
