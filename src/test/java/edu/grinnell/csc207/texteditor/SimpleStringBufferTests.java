@@ -2,6 +2,8 @@
 package edu.grinnell.csc207.texteditor;
 
 import org.junit.jupiter.api.Test;
+import net.jqwik.api.*;
+import net.jqwik.api.constraints.IntRange;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SimpleStringBufferTests {
@@ -100,4 +102,13 @@ public class SimpleStringBufferTests {
         sample.delete();
         assertEquals("cs", sample.toString());
     }   
+    
+    @Property
+    public void nonNegativeSize(@ForAll @IntRange(min = 0, max = 20) int size) {
+        SimpleStringBuffer sample = new SimpleStringBuffer();
+        for(int n = 0 ; n < size; n ++) {
+            sample.insert('a');
+        } 
+        assertTrue(sample.getSize() >= 0);
+    }
 }
