@@ -1,17 +1,20 @@
 package edu.grinnell.csc207.texteditor;
 
-import java.util.Arrays;
 /**
  * A gap buffer-based implementation of a text buffer.
  */
 public class GapBuffer {
-    
+
     private char[] backingData;
+
     private int indexLeftCursor;
+
     private int indexRightCursor;
+
     private int size;
+
     private static final int INITIAL_LENGTH = 10;
-    
+
     /**
      * Construct a gap buffer.
      */
@@ -21,9 +24,11 @@ public class GapBuffer {
         this.indexRightCursor = INITIAL_LENGTH - 1;
         this.size = 0;
     }
-    
+
     /**
      * Construct a gap buffer with pre-established array.
+     *
+     * @param text the text to be the backingData array.
      */
     public GapBuffer(String text) {
         this.backingData = text.toCharArray();
@@ -31,9 +36,11 @@ public class GapBuffer {
         this.indexRightCursor = INITIAL_LENGTH - 1;
         this.size = 0;
     }
-    
+
     /**
-     * Inserts character ch into the buffer at the left cursor's current position.
+     * Inserts character ch into the buffer at the left cursor's current
+     * position.
+     *
      * @param ch The character to be inserted.
      */
     public void insert(char ch) {
@@ -42,24 +49,25 @@ public class GapBuffer {
         this.indexLeftCursor++;
         this.size++;
     }
-    
+
     /**
      * Expand the array when there is no room in the gap.
      */
     public void expand() {
         if (this.indexLeftCursor == this.indexRightCursor) {
-            char[] newArr = new char[this.backingData.length*2];
+            char[] newArr = new char[this.backingData.length * 2];
             System.arraycopy(this.backingData, 0, newArr, 0, indexLeftCursor);
-            System.arraycopy(this.backingData, this.indexRightCursor, 
-                             newArr, newArr.length - this.indexRightCursor, 
-                             this.backingData.length - this.indexRightCursor);
+            System.arraycopy(this.backingData, this.indexRightCursor,
+                    newArr, newArr.length - this.indexRightCursor,
+                    this.backingData.length - this.indexRightCursor);
             this.backingData = newArr;
             this.indexRightCursor = this.backingData.length + this.indexRightCursor;
-        }      
+        }
     }
 
     /**
-     * Deletes the character at the one index to the left of left cursor's current position.
+     * Deletes the character at the one index to the left of left cursor's
+     * current position.
      */
     public void delete() {
         this.indexLeftCursor--;
@@ -68,6 +76,7 @@ public class GapBuffer {
 
     /**
      * Returns the current position of the left cursor.
+     *
      * @return the current position of the left cursor.
      */
     public int getCursorPosition() {
@@ -79,8 +88,8 @@ public class GapBuffer {
      */
     public void moveLeft() {
         if (this.indexLeftCursor != 0 && this.indexRightCursor != 0) {
-            this.backingData[this.indexRightCursor - 1] = 
-                                    this.backingData[this.indexLeftCursor - 1];
+            this.backingData[this.indexRightCursor - 1]
+                    = this.backingData[this.indexLeftCursor - 1];
             this.indexLeftCursor--;
             this.indexRightCursor--;
         }
@@ -91,39 +100,42 @@ public class GapBuffer {
      */
     public void moveRight() {
         if (this.indexRightCursor < this.backingData.length - 1) {
-                this.backingData[this.indexLeftCursor - 1] = 
-                                    this.backingData[this.indexRightCursor - 1];
-                this.indexLeftCursor++;
-                this.indexRightCursor++;
-        }  
+            this.backingData[this.indexLeftCursor - 1]
+                    = this.backingData[this.indexRightCursor - 1];
+            this.indexLeftCursor++;
+            this.indexRightCursor++;
+        }
     }
 
     /**
      * Return the size of the backingData.
+     *
      * @return the size of the backingData.
      */
     public int getSize() {
-       return this.size;
+        return this.size;
     }
 
     /**
      * Returns the ith character of the array, zero-indexed.
+     *
      * @param i
      * @return the character at index i.
      * @throws IndexOutOfBoundsException when i is invalid.
      */
     public char getChar(int i) {
-        if ( i < this.indexLeftCursor) {
+        if (i < this.indexLeftCursor) {
             return this.backingData[i];
-        } else if ( i < this.indexRightCursor) {
+        } else if (i < this.indexRightCursor) {
             return this.backingData[this.indexRightCursor + i - this.indexLeftCursor];
         } else {
             return this.backingData[i + this.indexRightCursor - this.indexLeftCursor];
-        }      
+        }
     }
 
     /**
      * Returns the contents of the gab buffer as a String.
+     *
      * @return a string as the contents.
      */
     @Override
@@ -131,7 +143,7 @@ public class GapBuffer {
         String result = "";
         for (int n = 0; n < this.backingData.length; n++) {
             if (n < this.indexLeftCursor && n >= this.indexRightCursor) {
-            result += this.backingData[n];
+                result += this.backingData[n];
             }
         }
         return result;
