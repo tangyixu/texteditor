@@ -118,6 +118,12 @@ public class GapBuffer {
      */
     @Override
     public String toString() {
-        return Arrays.toString(this.backingData);
+        String result = "";
+        for (int n = 0; n < this.backingData.length; n++) {
+            if (n < this.indexLeftCursor && n >= this.indexRightCursor) {
+            result += this.backingData[n];
+            }
+        }
+        return result;
     }
 }
