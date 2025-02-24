@@ -27,6 +27,24 @@ all have a runtime relevant to the input of the operation, which could lose much
 efficiency when the String has a big size.
 
 ## Changelog
+commit ead76fd12129cdc9e94f1f69901aa875f2423877 (HEAD -> main, origin/main, origin/HEAD)
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 23:53:10 2025 -0600
+
+    Fixed styles
+
+commit e0c4eb73b95e70689eda435d8f5a9368caffddf2
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 23:37:56 2025 -0600
+
+    Complete texteditor; Fix GapBuffer
+
+commit bd3f0a085b36a0a6d725139e3ea10bc4721a3af7
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 22:05:26 2025 -0600
+
+    Add tests for gap buffer
+
 commit 1261e440fc14d275d1fc490eaccdbb676d98a4b5 (HEAD -> main, origin/main, origin/HEAD)
 Author: unknown <tangyixu@grinnell.edu>
 Date:   Sun Feb 23 20:00:49 2025 -0600
