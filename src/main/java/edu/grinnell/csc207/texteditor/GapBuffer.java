@@ -23,6 +23,16 @@ public class GapBuffer {
     }
     
     /**
+     * Construct a gap buffer with pre-established array.
+     */
+    public GapBuffer(String text) {
+        this.backingData = text.toCharArray();
+        this.indexLeftCursor = 0;
+        this.indexRightCursor = INITIAL_LENGTH - 1;
+        this.size = 0;
+    }
+    
+    /**
      * Inserts character ch into the buffer at the left cursor's current position.
      * @param ch The character to be inserted.
      */
