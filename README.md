@@ -27,3 +27,122 @@ all have a runtime relevant to the input of the operation, which could lose much
 efficiency when the String has a big size.
 
 ## Changelog
+commit 08c7197081b7707aad44cf907a6900461850a015 (HEAD -> main, origin/main, origin/HEAD)
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 19:19:21 2025 -0600
+
+    Add property test
+
+commit ad359c05189da7e17f65270116550aa11c60301b
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 19:18:44 2025 -0600
+
+    Add part2
+
+commit 0091f0892701aa1f740ec9801c473fe0b06d85ea
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:53:30 2025 -0600
+
+    Complete tests
+
+commit 671b8f9722cf40b68799481ec3476930edc0c252
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:06:55 2025 -0600
+
+    Complete
+
+commit 836f715c5817ac2932491946e608990d80ff9048
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 17:04:59 2025 -0600
+
+    Update README.md
+
+:
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 19:19:21 2025 -0600
+
+    Add property test
+
+commit ad359c05189da7e17f65270116550aa11c60301b
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 19:18:44 2025 -0600
+
+    Add part2
+
+commit 0091f0892701aa1f740ec9801c473fe0b06d85ea
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:53:30 2025 -0600
+
+    Complete tests
+
+commit 671b8f9722cf40b68799481ec3476930edc0c252
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:06:55 2025 -0600
+
+    Complete
+
+commit 836f715c5817ac2932491946e608990d80ff9048
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 17:04:59 2025 -0600
+
+    Update README.md
+
+commit 32a90495f40bd92ce905d4d78fbdab4dbaa6d5f9
+Author: Peter-Michael Osera <osera@cs.grinnell.edu>
+Date:   Thu Feb 13 12:40:05 2025 -0600
+
+    Project files
+
+commit 02dc92144ecc088bcefb4a9798df0934efe300c1
+Author: Peter-Michael Osera <osera@cs.grinnell.edu>
+Date:   Thu Feb 13 12:39:53 2025 -0600
+
+    initial commit
+(END)
+commit 0091f0892701aa1f740ec9801c473fe0b06d85ea
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:53:30 2025 -0600
+
+    Complete tests
+
+commit 671b8f9722cf40b68799481ec3476930edc0c252
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:06:55 2025 -0600
+
+    Complete
+
+commit 836f715c5817ac2932491946e608990d80ff9048
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 17:04:59 2025 -0600
+
+    Update README.md
+
+commit 32a90495f40bd92ce905d4d78fbdab4dbaa6d5f9
+Author: Peter-Michael Osera <osera@cs.grinnell.edu>
+Date:   Thu Feb 13 12:40:05 2025 -0600
+
+    Project files
+
+commit 02dc92144ecc088bcefb4a9798df0934efe300c1
+Author: Peter-Michael Osera <osera@cs.grinnell.edu>
+Date:   Thu Feb 13 12:39:53 2025 -0600
+
+    initial commit
+(END)
+commit 0091f0892701aa1f740ec9801c473fe0b06d85ea
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:53:30 2025 -0600
+
+    Complete tests
+
+commit 671b8f9722cf40b68799481ec3476930edc0c252
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 18:06:55 2025 -0600
+
+    Complete
+
+commit 836f715c5817ac2932491946e608990d80ff9048
+Author: unknown <tangyixu@grinnell.edu>
+Date:   Sun Feb 23 17:04:59 2025 -0600
+
+    Update README.md
