@@ -1,11 +1,38 @@
 package edu.grinnell.csc207.texteditor;
 
+import java.util.Arrays;
+
 /**
  * A gap buffer-based implementation of a text buffer.
  */
 public class GapBuffer {
+    
+    private char[] backingData;
+    private int indexLeftCursor;
+    private int indexRightCursor;
+    private int size;
+    private static final int INITIAL_LENGTH = 10;
+    
+    /**
+     * Construct a gap buffer.
+     */
+    public GapBuffer() {
+        this.backingData = new char[INITIAL_LENGTH];
+        this.indexLeftCursor = 0;
+        this.indexRightCursor = INITIAL_LENGTH - 1;
+        this.size = 0;
+    }
+    
     public void insert(char ch) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        
+    }
+    
+    public void expand() {
+        if(this.indexLeftCursor == this.indexRightCursor) {
+            char[] newArr = new char[this.backingData.length*2];
+            
+        }
+        
     }
 
     public void delete() {

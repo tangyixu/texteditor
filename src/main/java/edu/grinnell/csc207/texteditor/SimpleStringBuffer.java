@@ -4,10 +4,6 @@ package edu.grinnell.csc207.texteditor;
 /**
  * A naive implementation of a text buffer using a <code>String</code>.
  */
-/**
- * A simple text buffer.
- * @author Tiffany Tang
- */
 public class SimpleStringBuffer {
     
     private String backingData;
