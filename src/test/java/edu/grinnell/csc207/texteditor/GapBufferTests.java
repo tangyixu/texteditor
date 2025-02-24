@@ -12,7 +12,7 @@ public class GapBufferTests {
     
     @Test
     public void normalInsertTest() {
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         sample.insert('a');
         assertEquals("a", sample.toString());
         sample.insert('b');
@@ -22,7 +22,7 @@ public class GapBufferTests {
     
     @Test
     public void edgeCaseInsert() {
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         sample.insert('a');
         sample.insert('b');
         sample.insert('c');
@@ -35,7 +35,7 @@ public class GapBufferTests {
     
     @Test
     public void getCharTest(){
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         sample.insert('a');
         sample.insert('b');
         sample.insert('c');
@@ -47,7 +47,7 @@ public class GapBufferTests {
     
     @Test
     public void getSizeTest() {
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         sample.insert('h');
         assertEquals(1, sample.getSize());
         sample.insert('e');
@@ -58,7 +58,7 @@ public class GapBufferTests {
     
     @Test
     public void moveAndGetPositionTest(){
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         sample.insert('a');
         sample.insert('b');
         sample.insert('c');
@@ -75,7 +75,7 @@ public class GapBufferTests {
     
     @Test
     public void insertTests() {
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         sample.insert('a');
         sample.insert('b');
         sample.insert('c');
@@ -91,7 +91,7 @@ public class GapBufferTests {
     
     @Test
     public void deleteTests(){
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         sample.insert('c');
         sample.insert('s');
         sample.insert('c');
@@ -105,12 +105,29 @@ public class GapBufferTests {
         assertEquals("cs", sample.toString());
     }   
     
+    @Test
+    public void arrayExpansion() {
+       GapBuffer sample = new GapBuffer();
+        sample.insert('i');
+        sample.insert('l');
+        sample.insert('o');
+        sample.insert('v');
+        sample.insert('e');
+        sample.insert('c');
+        sample.insert('s');
+        sample.insert('c');
+        sample.insert('n');
+        sample.insert('o');
+        sample.insert('w');
+        assertEquals(11, sample.getSize());    
+    }
+
     @Property
     public void nonNegativeSize(@ForAll @IntRange(min = 0, max = 20) int size) {
-        SimpleStringBuffer sample = new SimpleStringBuffer();
+        GapBuffer sample = new GapBuffer();
         for(int n = 0 ; n < size; n ++) {
             sample.insert('a');
         } 
         assertTrue(sample.getSize() >= 0);
-    }
+    }  
 }
