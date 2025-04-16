@@ -45,9 +45,9 @@ public class GapBuffer {
      * @param ch The character to be inserted.
      */
     public void insert(char ch) {
-        //if (this.size == this.backingData.length - 1) {
+        if (this.size == this.backingData.length - 1) {
             expand();
-        //}
+        }
         this.backingData[this.indexLeftCursor] = ch;
         this.indexLeftCursor++;
         this.size++;
@@ -60,9 +60,10 @@ public class GapBuffer {
         if (this.indexLeftCursor == this.indexRightCursor) {
             char[] newArr = new char[this.backingData.length * 2];
             System.arraycopy(this.backingData, 0, newArr, 0, indexLeftCursor);
-            System.arraycopy(this.backingData, this.indexRightCursor,
-                    newArr, newArr.length - this.indexRightCursor,
-                    this.backingData.length - this.indexRightCursor);
+            int end = newArr.length - (this.backingData.length - this.indexRightCursor);
+            System.arraycopy(this.backingData, this.indexRightCursor,newArr, end,
+                            this.backingData.length - this.indexRightCursor);
+            this.indexRightCursor = end;
             this.backingData = newArr;
             this.indexRightCursor = this.backingData.length + this.indexRightCursor;
         }
@@ -131,6 +132,9 @@ public class GapBuffer {
      * @throws IndexOutOfBoundsException when i is invalid.
      */
     public char getChar(int i) {
+        if (i < 0 || i >= this.size) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
         if (i < this.indexLeftCursor) {
             return this.backingData[i];
         } else if (i < this.indexRightCursor) {
@@ -149,9 +153,9 @@ public class GapBuffer {
     public String toString() {
         String result = "";
         for (int n = 0; n < this.backingData.length; n++) {
-            if (this.indexLeftCursor == this.indexRightCursor) {
-                result += this.backingData[n];
-            }
+//            if (this.indexLeftCursor == this.indexRightCursor) {
+//                result += this.backingData[n];
+//            }
             if (n < this.indexLeftCursor || n > this.indexRightCursor) {
                 result += this.backingData[n];
             }
