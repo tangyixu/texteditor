@@ -9,6 +9,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class GapBufferTests {
+    @Test
+    public void bigBufferTest() {
+        GapBuffer buf = new GapBuffer();
+        for (int i = 0; i < 16384; i++) {
+            buf.insert((char) (i % 10 + '0'));
+        }
+        assertEquals(16384, buf.getSize(), "size");
+        assertEquals(16384, buf.getCursorPosition(), "cursor");
+
+        for (int i = 0; i < 300; i++) {
+            buf.moveLeft();
+        }
+        buf.insert('!');
+        buf.insert('!');
+        buf.delete();
+        assertEquals(16385, buf.getSize(), "size");
+        assertEquals(16085, buf.getCursorPosition(), "cursor");
+    }
     
     @Test
     public void normalInsertTest() {

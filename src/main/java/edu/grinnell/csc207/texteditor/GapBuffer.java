@@ -60,12 +60,18 @@ public class GapBuffer {
         if (this.indexLeftCursor == this.indexRightCursor) {
             char[] newArr = new char[this.backingData.length * 2];
             System.arraycopy(this.backingData, 0, newArr, 0, indexLeftCursor);
-            int end = newArr.length - (this.backingData.length - this.indexRightCursor);
-            System.arraycopy(this.backingData, this.indexRightCursor,newArr, end,
+            if (this.indexLeftCursor == this.size) {
+                int start = this.indexLeftCursor + this.backingData.length - 1;
+                System.arraycopy(this.backingData, this.indexLeftCursor, newArr, start, 
+                        this.backingData.length - this.indexRightCursor);
+            } else {
+                int end = newArr.length - this.backingData.length;
+                System.arraycopy(this.backingData, this.indexRightCursor, newArr, end,
                             this.backingData.length - this.indexRightCursor);
-            this.indexRightCursor = end;
+                this.indexLeftCursor = end;
+            }
             this.backingData = newArr;
-            this.indexRightCursor = this.backingData.length + this.indexRightCursor;
+            this.indexRightCursor = this.indexLeftCursor + this.backingData.length / 2;
         }
     }
 
