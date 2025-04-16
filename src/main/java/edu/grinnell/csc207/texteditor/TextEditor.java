@@ -37,7 +37,7 @@ public class TextEditor {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        if (args.length != 1) {
+        if (args.length > 1) {
             System.err.println("Usage: java TextEditor <filename>");
             System.exit(1);
         }

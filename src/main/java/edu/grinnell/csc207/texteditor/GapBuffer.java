@@ -45,9 +45,9 @@ public class GapBuffer {
      * @param ch The character to be inserted.
      */
     public void insert(char ch) {
-        if (this.size == this.backingData.length - 1) {
+        //if (this.size == this.backingData.length - 1) {
             expand();
-        }
+        //}
         this.backingData[this.indexLeftCursor] = ch;
         this.indexLeftCursor++;
         this.size++;
