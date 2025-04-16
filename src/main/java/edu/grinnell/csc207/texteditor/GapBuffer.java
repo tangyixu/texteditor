@@ -8,9 +8,9 @@ public class GapBuffer {
 
     private char[] backingData;
 
-    private int indexLeftCursor;
+    public int indexLeftCursor;
 
-    private int indexRightCursor;
+    public int indexRightCursor;
 
     private int size;
 
@@ -81,7 +81,7 @@ public class GapBuffer {
      */
     public void delete() {
         if (this.indexLeftCursor != 0) {
-            this.backingData[indexLeftCursor - 1] = 0;
+            //this.backingData[indexLeftCursor - 1] = 0;
             this.indexLeftCursor--;
             this.size--;
         }  
@@ -100,10 +100,10 @@ public class GapBuffer {
      * Moves the cursor one position backwards.
      */
     public void moveLeft() {
-        if (this.indexLeftCursor != 0 && this.indexRightCursor != 0) {
+        if (this.indexLeftCursor > 0) {
             this.backingData[this.indexRightCursor]
                     = this.backingData[this.indexLeftCursor - 1];
-            this.backingData[this.indexLeftCursor - 1] = 0;
+            //this.backingData[this.indexLeftCursor - 1] = 0;
             this.indexLeftCursor--;
             this.indexRightCursor--;
         }
@@ -114,8 +114,7 @@ public class GapBuffer {
      */
     public void moveRight() {
         if (this.indexRightCursor < this.backingData.length - 1) {
-            this.backingData[this.indexRightCursor + 1]
-                    = this.backingData[this.indexLeftCursor];
+            this.backingData[this.indexLeftCursor] = this.backingData[this.indexRightCursor + 1];
             this.indexLeftCursor++;
             this.indexRightCursor++;
         }
@@ -143,10 +142,8 @@ public class GapBuffer {
         }
         if (i < this.indexLeftCursor) {
             return this.backingData[i];
-        } else if (i < this.indexRightCursor) {
-            return this.backingData[this.indexRightCursor + i - this.indexLeftCursor];
         } else {
-            return this.backingData[i + this.indexRightCursor - this.indexLeftCursor];
+            return this.backingData[i + this.indexRightCursor - this.indexLeftCursor + 1];
         }
     }
 

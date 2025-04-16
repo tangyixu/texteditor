@@ -23,10 +23,12 @@ public class TextEditor {
      * @throws java.io.IOException
      */
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
+        screen.clear();
         for (int n = 0; n < buf.getSize(); n++) {
-            screen.setCharacter(0, n, TextCharacter.fromCharacter(buf.getChar(n))[0]);
+            char c = buf.getChar(n);
+            screen.setCharacter(n, 0, TextCharacter.fromCharacter(c)[0]);
         }
-        screen.setCursorPosition(new TerminalPosition(0, buf.getCursorPosition()));
+        screen.setCursorPosition(new TerminalPosition(buf.getCursorPosition(), 0));
         screen.refresh();
     }
 
@@ -37,14 +39,14 @@ public class TextEditor {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        if (args.length > 1) {
+        if (args.length > 1 || args.length == 0) {
             System.err.println("Usage: java TextEditor <filename>");
             System.exit(1);
         }
         Screen screen = new DefaultTerminalFactory().createScreen();
         Path path = Paths.get(args[0]);
         GapBuffer buf;
-        System.out.format("Loading %s...\n", path);
+        System.out.println("Loading" + path.toString());
         if (Files.exists(path)) {
             buf = new GapBuffer(Files.readString(path));
         } else {
@@ -60,12 +62,16 @@ public class TextEditor {
                     break;
                 case Character:
                     buf.insert(stroke.getCharacter());
+                    break;
                 case ArrowLeft:
                     buf.moveLeft();
+                    break;
                 case ArrowRight:
                     buf.moveRight();
+                    break;
                 case Backspace:
                     buf.delete();
+                    break;
                 default:
                     System.out.println("Key cannot be identified.");
                     break;
