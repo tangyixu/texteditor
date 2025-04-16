@@ -29,20 +29,20 @@ public class SimpleStringBuffer {
         String part1 = backingData.substring(0, this.indexOfCursor);
         String part2 = backingData.substring(this.indexOfCursor, this.size);
         this.backingData = part1 + ch + part2;
-        this.moveRight();
         this.size++;
+        this.moveRight(); 
     }
 
     /**
      * Deletes the character at the cursor's current position.
      */
     public void delete() {
-        if (this.size != 0) {
+        if (this.size != 0 && this.indexOfCursor != 0) {
             String part1 = backingData.substring(0, this.indexOfCursor - 1);
             String part2 = backingData.substring(this.indexOfCursor, this.size);
             this.backingData = part1 + part2;
-            this.moveLeft();
             this.size--;
+            this.moveLeft();   
         }
     }
 

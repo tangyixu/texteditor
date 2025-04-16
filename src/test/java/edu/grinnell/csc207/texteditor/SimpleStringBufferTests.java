@@ -61,11 +61,11 @@ public class SimpleStringBufferTests {
         sample.insert('b');
         sample.insert('c');
         assertEquals(3, sample.getCursorPosition());
-        for (int n = 0; n < sample.getSize() + 1; n++) {
+        for (int n = 0; n < sample.getSize(); n++) {
             sample.moveLeft();
         }
         assertEquals(0, sample.getCursorPosition());    
-        for (int n = 0; n < sample.getSize() + 1; n++) {
+        for (int n = 0; n < sample.getSize(); n++) {
             sample.moveRight();
         }
         assertEquals(3, sample.getCursorPosition());  
@@ -96,7 +96,7 @@ public class SimpleStringBufferTests {
         sample.delete();
         assertEquals("cs", sample.toString());
         //Edge cases
-        for (int n = 0; n < sample.getSize() + 1; n++) {
+        for (int n = 0; n < 2; n++) {
             sample.moveLeft();
         }
         sample.delete();

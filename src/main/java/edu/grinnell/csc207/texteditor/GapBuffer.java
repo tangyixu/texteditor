@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.texteditor;
 
+import java.util.ArrayList;
+
 /**
  * A gap buffer-based implementation of a text buffer.
  */
@@ -44,7 +46,9 @@ public class GapBuffer {
      * @param ch The character to be inserted.
      */
     public void insert(char ch) {
-        this.expand();
+        if (this.size == this.backingData.length - 1) {
+            expand();
+        }
         this.backingData[this.indexLeftCursor] = ch;
         this.indexLeftCursor++;
         this.size++;
@@ -70,8 +74,11 @@ public class GapBuffer {
      * current position.
      */
     public void delete() {
-        this.indexLeftCursor--;
-        this.size--;
+        if (this.indexLeftCursor != 0) {
+            this.backingData[indexLeftCursor - 1] = 0;
+            this.indexLeftCursor--;
+            this.size--;
+        }  
     }
 
     /**
@@ -88,8 +95,9 @@ public class GapBuffer {
      */
     public void moveLeft() {
         if (this.indexLeftCursor != 0 && this.indexRightCursor != 0) {
-            this.backingData[this.indexRightCursor - 1]
+            this.backingData[this.indexRightCursor]
                     = this.backingData[this.indexLeftCursor - 1];
+            this.backingData[this.indexLeftCursor - 1] = 0;
             this.indexLeftCursor--;
             this.indexRightCursor--;
         }
@@ -100,8 +108,8 @@ public class GapBuffer {
      */
     public void moveRight() {
         if (this.indexRightCursor < this.backingData.length - 1) {
-            this.backingData[this.indexLeftCursor - 1]
-                    = this.backingData[this.indexRightCursor - 1];
+            this.backingData[this.indexRightCursor + 1]
+                    = this.backingData[this.indexLeftCursor];
             this.indexLeftCursor++;
             this.indexRightCursor++;
         }
@@ -142,7 +150,10 @@ public class GapBuffer {
     public String toString() {
         String result = "";
         for (int n = 0; n < this.backingData.length; n++) {
-            if (n < this.indexLeftCursor && n >= this.indexRightCursor) {
+            if (this.indexLeftCursor == this.indexRightCursor) {
+                result += this.backingData[n];
+            }
+            if (n < this.indexLeftCursor || n > this.indexRightCursor) {
                 result += this.backingData[n];
             }
         }
