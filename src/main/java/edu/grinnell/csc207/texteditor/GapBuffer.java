@@ -1,6 +1,5 @@
 package edu.grinnell.csc207.texteditor;
 
-import java.util.ArrayList;
 
 /**
  * A gap buffer-based implementation of a text buffer.
